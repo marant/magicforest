@@ -14,8 +14,8 @@
  
 #include <iostream>
 
-#include "IEvent.h"
-#include "CLocation.h"
+class IEvent;
+class CLocation;
 
 class IGameObject {
 public:
@@ -32,18 +32,18 @@ public:
    * by the time you want to use it, it might have already been deleted!
    */
   CLocation* SetLocation(CLocation* pNewLocation);
-  IEvent *SetAssociatedEvent(IEvent* pNewEvent);
+  IEvent* SetAssociatedEvent(IEvent* pNewEvent);
   std::string SetDescription(std::string Description);
   std::string SetName(std::string Name);
 
   /* GETTERS 
    *
    * Not really that difficult to grasp
-   * */
-  inline CLocation* GetLocation() { return this->Location; }
-  inline IEvent*  GetAssociatedEvent() { return this->AssociatedEvent; }
-  inline std::string GetDescription() { return this->Description; }
-  inline std::string GetName() { return this->Name; }
+   */
+  inline CLocation* GetLocation() const { return this->Location; }
+  IEvent* GetAssociatedEvent() const { return this->AssociatedEvent; }
+  inline std::string GetDescription() const  { return this->Description; }
+  inline std::string GetName() const { return this->Name; }
   
 private:
   CLocation* Location;

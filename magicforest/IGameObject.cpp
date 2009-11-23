@@ -1,5 +1,7 @@
 #include "IGameObject.h"
 
+#include "IEvent.h"
+#include "CLocation.h"
 /*
  * SETTERS
  */
