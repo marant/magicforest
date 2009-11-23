@@ -1,5 +1,5 @@
 #ifndef __IGAMEOBJECT_H__
-#define IGAMEOBJECT
+#define __IGAMEOBJECT_H__
 
 /*
  * Author: Marko "marant" Silokunnas
