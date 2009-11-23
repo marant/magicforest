@@ -34,7 +34,7 @@ std::string IGameObject::SetName( std::string Name )
   this->Name = Name;
 }
 
-CEvent* IGameObject::SetAssociatedEvent( CEvent* pNewAssociatedEvent )
+IEvent* IGameObject::SetAssociatedEvent( IEvent* pNewAssociatedEvent )
 {
   if( pNewAssociatedEvent )
   {

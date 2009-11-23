@@ -14,7 +14,7 @@
  
 #include <iostream>
 
-#include "CEvent.h"
+#include "IEvent.h"
 #include "CLocation.h"
 
 class IGameObject {
@@ -32,7 +32,7 @@ public:
    * by the time you want to use it, it might have already been deleted!
    */
   CLocation* SetLocation(CLocation* pNewLocation);
-  CEvent *SetAssociatedEvent(CEvent* pNewEvent);
+  IEvent *SetAssociatedEvent(IEvent* pNewEvent);
   std::string SetDescription(std::string Description);
   std::string SetName(std::string Name);
 
@@ -41,13 +41,13 @@ public:
    * Not really that difficult to grasp
    * */
   inline CLocation* GetLocation() { return this->Location; }
-  inline CEvent*  GetAssociatedEvent() { return this->AssociatedEvent; }
+  inline IEvent*  GetAssociatedEvent() { return this->AssociatedEvent; }
   inline std::string GetDescription() { return this->Description; }
   inline std::string GetName() { return this->Name; }
   
 private:
   CLocation* Location;
-  CEvent* AssociatedEvent;
+  IEvent* AssociatedEvent;
   std::string Description;
   std::string Name;
 };
