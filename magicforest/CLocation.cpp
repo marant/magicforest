@@ -60,7 +60,8 @@ CLocation* CLocation::AskRoute()
 
 		switch (choice) 
 		{
-			/* check that the player won't accidentally push the wrong button and cause null-pointer madness */
+			/* check that the player won't accidentally 
+			 * push the wrong button and cause null-pointer madness */
 			case 1:
 				pNorthRoute ? return pNorthRoute : fail=1;
 				break;
