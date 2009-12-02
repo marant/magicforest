@@ -2,8 +2,8 @@
 #define __IINTERACTIONESSENTIALS_H__
 	
 /*
- * Author: Juhani Alanko
- * Date: 2009-11-30
+ * Author: Juhani "argontus" Alanko
+ * Date: 2009-12-02
  * Description: 
  *
  * An abstract class that every interactive class shall
