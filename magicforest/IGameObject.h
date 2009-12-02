@@ -19,8 +19,6 @@ class CLocation;
 
 class IGameObject {
 public:
-  virtual ~IGameObject() = 0;
-
   /* SETTERS 
    *
    * All setters return a pointer to a  class/struct/whatever they're supposed
