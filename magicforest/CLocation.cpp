@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "CLocation.h"
+#include "IEvent.h"
 
 
 CLocation::CLocation()
@@ -14,7 +15,8 @@ CLocation::~CLocation()
 	unsigned int i;
 	for (i = 0; i < Events.size(); i++)
 	{
-		CEvent* pTempEvent = Events[i];
+		IEvent* pTempEvent = NULL;
+    pTempEvent = Events[i];
 		delete pTempEvent;
 	}
 
@@ -22,7 +24,7 @@ CLocation::~CLocation()
 }
 
 
-void CLocation::AddEvent(CEvent* pEvent)
+void CLocation::AddEvent(IEvent* pEvent)
 {
 	Events.push_back(pEvent);
 }
@@ -46,16 +48,24 @@ void CLocation::ExecuteEvents()
  */
 CLocation* CLocation::AskRoute()
 {
-	unsigned int choice, fail=0;
+	unsigned int choice, fail=1;
 	/* loop until player gets it right */
-	while (!fail)
+	while (fail != 0)
 	{
 		printf("Where do you want to go?\n");
 		/* test if route exists, otherwise don't show the option */
-		pNorthRoute ? printf("1: North\n") : ;
-		pEastRoute ? printf("2: East\n") : ;
-		pSouthRoute ? printf("3: South\n") : ;
-		pWestRoute ? printf("4: West\n") : ;
+		if( pNorthRoute ) 
+      printf("1: North\n");
+
+		if( pEastRoute ) 
+      printf("2: East\n");
+    
+    if( pSouthRoute )
+      printf("3: South\n");
+
+		if( pWestRoute )
+      printf("4: West\n");
+
 		scanf("%d",choice);
 
 		switch (choice) 
@@ -63,17 +73,32 @@ CLocation* CLocation::AskRoute()
 			/* check that the player won't accidentally 
 			 * push the wrong button and cause null-pointer madness */
 			case 1:
-				pNorthRoute ? return pNorthRoute : fail=1;
+				if( pNorthRoute )
+         return pNorthRoute;
+
+        fail=1;
 				break;
+
 			case 2:
-				pEastRoute ? return pEastRoute : fail=1;
+				if( pEastRoute )
+          return pEastRoute;
+
+        fail=1;
 				break;
+
 			case 3:
-				pSouthRoute ? return pSouthRoute : fail=1;
+				if( pSouthRoute )
+         return pSouthRoute;
+        
+        fail=1;
 				break;
+
 			case 4:
-				pWestRoute ? return pWestRoute : fail=1;
+				if( pWestRoute )
+          return pWestRoute;
+        fail=1;
 				break;
+
 			default:
 				printf("Invalid option!\n");
 				fail = 1;

@@ -3,7 +3,7 @@
  * Date: 2009-11-23
  * Description: 
  *
- * A location class to be used as a container and player for CEvents.
+ * A location class to be used as a container and player for IEvents.
  * Contains certain routes where the player can go on their epic journey
  * after going through all the events in the location.
  *
@@ -13,7 +13,10 @@
 
 #define __CLOCATION_H__
 
-#include <vector.h>
+#include <vector>
+#include <iostream>
+
+class IEvent;
 
 class CLocation 
 {
@@ -22,24 +25,27 @@ public:
 	virtual ~CLocation ();
 
 	/* set functions, given a pointer as a parameter */
-	inline void SetNorthRoute(CLocation* pLocation) { pNorthRoute = pLocation }
-	inline void SetEastRoute(CLocation* pLocation) { pEastRoute = pLocation }
-	inline void SetSouthRoute(CLocation* pLocation) { pSouthRoute = pLocation }
-	inline void SetWestRoute(CLocation* pLocation) { pWestRoute = pLocation }
+	inline void SetNorthRoute( CLocation* pLocation) { this->pNorthRoute = pLocation; }
+	inline void SetEastRoute(CLocation* pLocation) { this->pEastRoute = pLocation; }
+	inline void SetSouthRoute(CLocation* pLocation) { this->pSouthRoute = pLocation; }
+	inline void SetWestRoute(CLocation* pLocation) { this->pWestRoute = pLocation; }
 
 	/* get functions, returns a pointer to location */
-	inline CLocation* GetNorthRoute() { return pNorthLocation }
-	inline CLocation* GetEastRoute() { return pEastLocation }
-	inline CLocation* GetSouthRoute() { return pSouthLocation }
-	inline CLocation* GetWestRoute() { return pWestLocation }
+	inline CLocation* GetNorthRoute() { return this->pNorthRoute; }
+	inline CLocation* GetEastRoute() { return this->pEastRoute; }
+	inline CLocation* GetSouthRoute() { return this->pSouthRoute; }
+	inline CLocation* GetWestRoute() { return this->pWestRoute; }
 
-	void AddEvent(CEvent* pEvent);
+	void AddEvent(IEvent* pEvent);
 	void ExecuteEvents();
 	CLocation* AskRoute();
 
 private:
-	CLocation* pNorthRoute, pEastRoute, pSouthRoute, pWestRoute;
-	std::vector<CEvent*> Events;
+	CLocation* pNorthRoute;
+  CLocation* pEastRoute;
+  CLocation* pSouthRoute;
+  CLocation* pWestRoute;
+	std::vector<IEvent*> Events;
 };
 
 #endif /* __CLOCATION_H__ */
