@@ -5,8 +5,8 @@ Done:
   IGameObject
   IInteractionEssentials
   IPhysicalInteractions
+  IEventNotifier
 
 TODO:
-  IEventNotifier
   CGameCharacter
   CGame
