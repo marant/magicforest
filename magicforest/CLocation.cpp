@@ -70,7 +70,7 @@ CLocation* CLocation::AskRoute()
 		if( pWestRoute )
       printf("4: West\n");
 
-		scanf("%d",choice);
+		scanf("%d", &choice);
 
 		switch (choice) 
 		{
