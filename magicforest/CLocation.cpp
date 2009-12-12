@@ -5,7 +5,11 @@
 
 CLocation::CLocation()
 {
-	/* constructor */
+  // set all routes to null
+  pNorthRoute = NULL;
+  pSouthRoute = NULL;
+  pEastRoute  = NULL;
+  pWestRoute  = NULL;
 }
 
 
