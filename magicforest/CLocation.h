@@ -29,12 +29,14 @@ public:
 	inline void SetEastRoute(CLocation* pLocation) { this->pEastRoute = pLocation; }
 	inline void SetSouthRoute(CLocation* pLocation) { this->pSouthRoute = pLocation; }
 	inline void SetWestRoute(CLocation* pLocation) { this->pWestRoute = pLocation; }
+  void SetListener(IEventNotifier* newListener);
 
 	/* get functions, returns a pointer to location */
 	inline CLocation* GetNorthRoute() { return this->pNorthRoute; }
 	inline CLocation* GetEastRoute() { return this->pEastRoute; }
 	inline CLocation* GetSouthRoute() { return this->pSouthRoute; }
 	inline CLocation* GetWestRoute() { return this->pWestRoute; }
+  inline IEventNotifier* GetListener() { return this->pListener; }
 
 	void AddEvent(IEvent* pEvent);
 	void ExecuteEvents();
@@ -45,6 +47,8 @@ private:
   CLocation* pEastRoute;
   CLocation* pSouthRoute;
   CLocation* pWestRoute;
+  IEventNotifier* pListener;
+
 	std::vector<IEvent*> Events;
 };
 

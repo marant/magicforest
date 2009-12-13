@@ -110,3 +110,8 @@ CLocation* CLocation::AskRoute()
 		}
 	}
 }
+
+void CLocation::SetListener(IEventNotifer* newListener)
+{
+  this->pListener = newListener;
+}
