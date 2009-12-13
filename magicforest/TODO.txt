@@ -6,7 +6,7 @@ Done:
   IInteractionEssentials
   IPhysicalInteractions
   IEventNotifier
+  CGameCharacter
 
 TODO:
-  CGameCharacter
   CGame
