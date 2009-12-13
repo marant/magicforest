@@ -19,6 +19,10 @@
  * Events can also have objects of their own as you might want to be able to
  * create an event in which you find something etc.
  *
+ * This file also defines IEventNotifier, all classes that want to 
+ * communicate with classes that extend IEvent have to implement
+ * functions defined in IEventNotifier.
+ *
  */
 
 #include <vector>
@@ -50,6 +54,14 @@ private:
   std::string Description;
   std::vector<IGameObject*> ObjectList;
 
+};
+
+class IEventNotifier 
+{
+
+public:
+  virtual void LocationChanged( const CLocation* pNewLocation );
+  virtual void PlayerDied( const CGameCharacter* pPlayer );
 };
 
 #endif /* __IEVENT_H__ */

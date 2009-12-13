@@ -1,0 +1,12 @@
+Done:
+  CGameItem
+  CLocation
+  IEvent
+  IGameObject
+  IInteractionEssentials
+  IPhysicalInteractions
+  IEventNotifier
+
+TODO:
+  CGameCharacter
+  CGame
