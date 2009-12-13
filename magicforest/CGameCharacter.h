@@ -18,18 +18,20 @@
 #include "IPhysicalInteractions.h"
 #include "IInteractionEssentials.h"
 
+class CGameItem;
 
 class CGameCharacter : public IGameObject, 
-											 public IPhysicalInteractions, 
-											 public	IInteractionEssentials
+                       public IPhysicalInteractions, 
+                       public	IInteractionEssentials
 {
 public:
 	CGameCharacter ();
 	CGameCharacter (std::string name);
-	virtual ~CGameCharacter ();
+  ~CGameCharacter ();
 
 	CGameItem* AddToInventory(CGameItem* pItem);
 	CGameItem* RemoveItemFromInventory(CGameItem* pItem);
+
 private:
 	std::vector<CGameItem*> Inventory;
 };

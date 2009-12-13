@@ -17,6 +17,7 @@
 
 
 #include "IGameObject.h"
+
 class CGameCharacter;
 
 class CGameItem : public IGameObject

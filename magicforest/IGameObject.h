@@ -19,6 +19,8 @@ class CLocation;
 
 class IGameObject {
 public:
+  IGameObject();
+
   /* SETTERS 
    *
    * All setters return a pointer to a  class/struct/whatever they're supposed
@@ -43,7 +45,7 @@ public:
   inline std::string GetDescription() const  { return this->Description; }
   inline std::string GetName() const { return this->Name; }
   
-private:
+protected:
   CLocation* Location;
   IEvent* AssociatedEvent;
   std::string Description;

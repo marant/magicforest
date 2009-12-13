@@ -6,6 +6,9 @@
  * SETTERS
  */
 
+IGameObject::IGameObject( )
+{
+}
 /*
  * Sets new location and returns a pointer to the new location.
  * Note that you should NOT use the returned pointer in anything, aside
@@ -29,11 +32,13 @@ CLocation* IGameObject::SetLocation( CLocation* pNewLocation )
 std::string IGameObject::SetDescription( std::string Description )
 {
   this->Description = Description;
+  return this->Description;
 }
 
-std::string IGameObject::SetName( std::string Name )
+std::string IGameObject::SetName( std::string newName )
 {
-  this->Name = Name;
+  this->Name = newName;
+  return this->Name;
 }
 
 IEvent* IGameObject::SetAssociatedEvent( IEvent* pNewAssociatedEvent )

@@ -17,6 +17,7 @@
 #include <iostream>
 
 class IEvent;
+class IEventNotifier;
 
 class CLocation 
 {

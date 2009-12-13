@@ -111,7 +111,7 @@ CLocation* CLocation::AskRoute()
 	}
 }
 
-void CLocation::SetListener(IEventNotifer* newListener)
+void CLocation::SetListener(IEventNotifier* newListener)
 {
   this->pListener = newListener;
 }

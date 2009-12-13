@@ -29,12 +29,14 @@
 #include <iostream>
 
 class IGameObject;
+class CLocation;
+class CGameCharacter;
 
 class IEvent {
 
 public:
   IEvent();
-  virtual ~IEvent() = 0;
+  virtual ~IEvent();
 
   /*
    * SetDescription returns a pointer to the string and it's sole purpose 
@@ -50,7 +52,6 @@ public:
 
   virtual int RunEvent() = 0; 
 
-private:
   std::string Description;
   std::vector<IGameObject*> ObjectList;
 
@@ -60,8 +61,8 @@ class IEventNotifier
 {
 
 public:
-  virtual void LocationChanged( const CLocation* pNewLocation );
-  virtual void PlayerDied( const CGameCharacter* pPlayer );
+  virtual void LocationChanged( const CLocation* pNewLocation ) = 0;
+  virtual void PlayerDied( const CGameCharacter* pPlayer ) = 0;
 };
 
 #endif /* __IEVENT_H__ */

@@ -1,8 +1,9 @@
 #include "CGameCharacter.h"
+#include "CGameItem.h"
 
 CGameCharacter::CGameCharacter()
 {
-	/* constructor */
+  this->Name = "Not set";
 }
 
 CGameCharacter::CGameCharacter (std::string name)

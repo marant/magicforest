@@ -18,7 +18,6 @@ class IPhysicalInteractions
 {
 public:
   IPhysicalInteractions();
-  virtual ~IPhysicalInteractions() = 0;
 
   float DecreaseHP( float amount );
   float IncreaseHP( float amount );

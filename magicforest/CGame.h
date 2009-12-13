@@ -12,19 +12,26 @@
 #define __CGAME_H__
 
 #include <vector>
+#include <iostream>
+
+#include "IEvent.h"
+#include "CGameCharacter.h"
 
 class CGame : public IEventNotifier 
 {
 public:
 	CGame ();
-	virtual ~CGame ();
+  ~CGame();
 
 	void Start();
 	void End();
+  void AskPlayerInfo();
 
 private:
 	CGameCharacter Player;
 	std::vector<CLocation*> Locations;
+  void LocationChanged( const CLocation* newLocation );
+  void PlayerDied( const CGameCharacter* Player );
 };
 
 #endif /* __CGAME_H__ */

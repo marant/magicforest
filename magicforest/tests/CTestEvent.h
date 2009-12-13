@@ -2,14 +2,16 @@
 #define __CTESTEVENT_H__
 
 #include "../IEvent.h"
+#include "../CLocation.h"
+
+#include <iostream>
 
 class CTestEvent : public IEvent {
 public:
-  CTestEvent ();
-  virtual ~CTestEvent ();
+  CTestEvent();
+  ~CTestEvent();
 
-private:
-  
+  int RunEvent();
 };
 
 #endif /* __CTESTEVENT_H__ */

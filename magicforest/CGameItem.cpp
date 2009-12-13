@@ -14,7 +14,6 @@ CGameItem::~CGameItem()
 {
   if( pOwner )
   {
-    delete this->pOwner;
     this->pOwner = NULL;
   }
 }
