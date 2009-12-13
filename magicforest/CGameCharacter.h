@@ -14,6 +14,10 @@
 #include <vector>
 #include <iostream>
 
+#include "IGameObject.h"
+#include "IPhysicalInteractions.h"
+#include "IInteractionEssentials.h"
+
 
 class CGameCharacter : public IGameObject, 
 											 public IPhysicalInteractions, 
