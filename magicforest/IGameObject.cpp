@@ -8,6 +8,10 @@
 
 IGameObject::IGameObject( )
 {
+  this->Location = NULL; 
+  this->AssociatedEvent = NULL;
+  this->Description = "Not set";
+  this->Name = "Not set";
 }
 /*
  * Sets new location and returns a pointer to the new location.
