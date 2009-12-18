@@ -98,9 +98,12 @@ int CBattleEvent::RunEvent()
     {
       std::cout << "YEAH!! You dealt " << Player->AttackTarget() << " damage to ";
       std::cout << Opponent->GetName() << std::endl; 
-
-      std::cout << Opponent->GetName() << " Deals " << Opponent->AttackTarget();
-      std::cout << " damage to you!" << std::endl;
+    
+      if( Opponent->GetHP() > 0 )
+      {
+        std::cout << Opponent->GetName() << " Deals " << Opponent->AttackTarget();
+        std::cout << " damage to you!" << std::endl;
+      }
     }
 
     // haven't really thought escaping through yet so we'll just insult the 
