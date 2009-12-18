@@ -16,9 +16,14 @@ CGame::CGame()
   CGameCharacter* Orc     = new CGameCharacter();
   CGameCharacter* Bandit  = new CGameCharacter();
 
+	//Loot
+	CGameItem* phat = new CGameItem();
+	phat->SetName("a can of ES");
+
   //Events
   CBattleEvent* battle1 = new CBattleEvent(Player, Orc);
   CBattleEvent* battle2 = new CBattleEvent(Player, Bandit);
+	CGenericEvent* lootevent = new CGenericEvent(phat);
   CEndEvent* endevent = new CEndEvent();
   endevent->SetListener(this);
 
@@ -60,6 +65,7 @@ CGame::CGame()
 
   //initialize Location2
   Location2->SetListener(this);
+	Location2->AddEvent(lootevent);
   Location2->AddEvent(battle2);
   //Location3->SetDescription("You see a small clearing up ahead.");
 
