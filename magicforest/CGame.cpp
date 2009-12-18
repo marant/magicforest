@@ -27,7 +27,8 @@ CGame::CGame()
   CBattleEvent* battle2 = new CBattleEvent(Player, Bandit);
   CGenericEvent* lootevent = new CGenericEvent();
   CEndEvent* endevent = new CEndEvent();
-	lootevent->SetLoot(phat);
+  lootevent->SetLoot(phat);
+  lootevent->SetListener(this);
   endevent->SetListener(this);
 
   battle1->SetDescription("As you walk forward an Orc jumps at you through "
@@ -68,7 +69,7 @@ CGame::CGame()
 
   //initialize Location2
   Location2->SetListener(this);
-	Location2->AddEvent(lootevent);
+  Location2->AddEvent(lootevent);
   Location2->AddEvent(battle2);
   //Location3->SetDescription("You see a small clearing up ahead.");
 
