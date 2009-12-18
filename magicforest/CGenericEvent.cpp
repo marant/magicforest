@@ -3,7 +3,7 @@
 CGenericEvent::CGenericEvent()
  : IEvent()
 {
-
+	this->Loot = NULL;
 }
 
 CGenericEvent::~CGenericEvent()

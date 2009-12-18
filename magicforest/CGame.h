@@ -32,6 +32,7 @@ private:
 	std::vector<CLocation*> Locations;
   CLocation* CurrentLocation;
   void LocationChanged( CLocation* newLocation );
+	void GotLoot(CGameItem* pLoot);
   void PlayerDied( CGameCharacter* Player );
   void GameEnded();
 };

@@ -3,6 +3,8 @@
 #include "CLocation.h"
 #include "CBattleEvent.h"
 #include "CEndEvent.h"
+#include "CGameItem.h"
+#include "CGenericEvent.h"
 
 //Initialize the game, create locations, player and monsters
 CGame::CGame()
@@ -23,8 +25,9 @@ CGame::CGame()
   //Events
   CBattleEvent* battle1 = new CBattleEvent(Player, Orc);
   CBattleEvent* battle2 = new CBattleEvent(Player, Bandit);
-	CGenericEvent* lootevent = new CGenericEvent(phat);
+	CGenericEvent* lootevent = new CGenericEvent();
   CEndEvent* endevent = new CEndEvent();
+	lootevent->SetLoot(phat);
   endevent->SetListener(this);
 
   battle1->SetDescription("As you walk forward an Orc jumps at you through "

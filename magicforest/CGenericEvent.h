@@ -11,6 +11,8 @@
 #ifndef __CGENERICEVENT_H__
 #define __CGENERICEVENT_H__
 
+class CGameItem;
+
 class CGenericEvent : public IEvent
 {
 public:

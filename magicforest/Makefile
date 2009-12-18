@@ -33,6 +33,10 @@ CBattleEvent.o: CBattleEvent.h CBattleEvent.cpp \
 								CGameCharacter.h
 	$(CXX) $(CFLAGS) $(DEFINE) CBattleEvent.cpp -c -o CBattleEvent.o
 
+CGenericEvent.o: CGenericEvent.h CGenericEvent.cpp \
+								 CGameItem.h
+	$(CXX) $(CFLAGS) $(DEFINE) CGenericEvent.cpp -c -o CGenericEvent.o
+
 CEndEvent.o: CEndEvent.h CEndEvent.cpp \
 						 IEvent.h
 	$(CXX) $(CFLAGS) $(DEFINE) CEndEvent.cpp -c -o CEndEvent.o
