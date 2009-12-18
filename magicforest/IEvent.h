@@ -32,7 +32,16 @@ class IGameObject;
 class CLocation;
 class CGameCharacter;
 
-class IEvent {
+class IEventNotifier 
+{
+
+public:
+  virtual void LocationChanged( const CLocation* pNewLocation ) = 0;
+  virtual void PlayerDied( const CGameCharacter* pPlayer ) = 0;
+};
+
+class IEvent 
+{
 
 public:
   IEvent();
@@ -44,6 +53,9 @@ public:
    * DO NOT USE IT FOR ANYTHING ELSE
    */
   std::string* SetDescription(std::string newDescription);
+  bool SetListener( IEventNotifier* newListener);
+
+  inline IEventNotifier* GetListener() const { return this->Listener; }
   inline std::string GetDescription() { return this->Description; }
 
   IGameObject* AddObject( IGameObject* pNewObject );
@@ -52,17 +64,11 @@ public:
 
   virtual int RunEvent() = 0; 
 
+protected:
   std::string Description;
   std::vector<IGameObject*> ObjectList;
+  IEventNotifier* Listener;
 
-};
-
-class IEventNotifier 
-{
-
-public:
-  virtual void LocationChanged( const CLocation* pNewLocation ) = 0;
-  virtual void PlayerDied( const CGameCharacter* pPlayer ) = 0;
 };
 
 #endif /* __IEVENT_H__ */

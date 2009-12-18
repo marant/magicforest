@@ -7,6 +7,7 @@
 IEvent::IEvent( )
 {
   this->Description = "Not set";
+  this->Listener    = NULL;
 }
 
 // Destructor frees the ObjectList and that's pretty much it
@@ -29,6 +30,17 @@ std::string* IEvent::SetDescription( std::string newDescription )
   return &Description;
 }
 
+bool IEvent::SetListener(IEventNotifier* newListener)
+{
+  if( !newListener )
+  {
+    return false;
+  }
+
+  this->Listener = newListener;
+  return true;
+}
+
 IGameObject* IEvent::AddObject( IGameObject* pNewObject )
 {
   if (pNewObject) 
@@ -39,6 +51,7 @@ IGameObject* IEvent::AddObject( IGameObject* pNewObject )
 
   return NULL;
 }
+
 
 /*
  * Removes object that is specified in the parameter from the object list,  if
