@@ -1,4 +1,5 @@
 #include "IPhysicalInteractions.h"
+#include "CGameCharacter.h"
 
 IPhysicalInteractions::IPhysicalInteractions( )
 {
@@ -20,7 +21,7 @@ IPhysicalInteractions::IPhysicalInteractions( )
  */
 float IPhysicalInteractions::DecreaseHP( float HPDecrease )
 {
-  return this->ChangeHP( HPDecrease*(-1) );
+  return (-1)*this->ChangeHP( HPDecrease*(-1) );
 }
 
 /*
@@ -43,7 +44,13 @@ float IPhysicalInteractions::ChangeHP( float change )
   if( newHP >= 0 )
   {
     this->HP = newHP;
-    return newHP;
+    return change;
+  }
+
+  else 
+  {
+    this->HP = 0;
+    return 0;
   }
 
   return 0;
@@ -57,6 +64,19 @@ bool IPhysicalInteractions::SetTarget( CGameCharacter* newTarget )
   this->pTarget = newTarget;
   return true;
 }
+
+bool IPhysicalInteractions::SetHP( float newHP )
+{
+  this->HP = newHP;
+  return true;
+}
+
+bool IPhysicalInteractions::SetAttackModifier( float newAttackModifier )
+{
+  this->AttackModifier = newAttackModifier;
+  return true;
+}
+
 
 /*
  * attacks the target by reducing target's HP

@@ -27,6 +27,8 @@ public:
 
   /* set */
   bool SetTarget( CGameCharacter* newTarget );
+  bool SetAttackModifier( float newAttackModifier );
+  bool SetHP( float newHP );
   
   /* get */
   CGameCharacter* GetTarget() const { return this->pTarget; }
