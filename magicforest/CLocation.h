@@ -49,7 +49,7 @@ private:
   CLocation* pSouthRoute;
   CLocation* pWestRoute;
   IEventNotifier* pListener;
-
+  
 	std::vector<IEvent*> Events;
 };
 

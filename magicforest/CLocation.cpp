@@ -56,6 +56,8 @@ CLocation* CLocation::AskRoute()
 	/* loop until player gets it right */
 	while (fail != 0)
 	{
+    CLocation* pNextLocation = NULL;
+
 		printf("Where do you want to go?\n");
 		/* test if route exists, otherwise don't show the option */
 		if( pNorthRoute ) 
@@ -74,40 +76,70 @@ CLocation* CLocation::AskRoute()
 
 		switch (choice) 
 		{
+      //quick&dirty hack to for IEventNotifier way of changing locations
+
 			/* check that the player won't accidentally 
 			 * push the wrong button and cause null-pointer madness */
 			case 1:
 				if( pNorthRoute )
-         return pNorthRoute;
-
-        fail=1;
-				break;
+        {
+          pNextLocation = pNorthRoute;
+        }
+        else 
+        {
+          fail = 1;
+        }
+		  break;
 
 			case 2:
 				if( pEastRoute )
-          return pEastRoute;
-
-        fail=1;
-				break;
+        {
+          pNextLocation = pEastRoute;
+          break;
+        }
+        else 
+        {
+          fail = 1;
+        }
+		  break;
 
 			case 3:
 				if( pSouthRoute )
-         return pSouthRoute;
-        
-        fail=1;
-				break;
+        {
+          pNextLocation = pSouthRoute;
+          break;
+        }
+        else 
+        {
+          fail = 1;
+        }
+      break;
 
 			case 4:
 				if( pWestRoute )
-          return pWestRoute;
-        fail=1;
-				break;
+        {
+          pNextLocation = pWestRoute;
+          break;
+        }
+        else 
+        {
+          fail = 1;
+        }
+      break;
 
 			default:
 				printf("Invalid option!\n");
 				fail = 1;
-				break;
+		  break;
 		}
+    
+    if(pListener)
+    {
+      pListener->LocationChanged(pNextLocation);
+    }
+
+    //we only do this to obey the declaration
+    return pNextLocation;
 	}
 }
 
