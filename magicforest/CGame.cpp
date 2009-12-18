@@ -1,9 +1,72 @@
 #include <stdio.h>
 #include "CGame.h"
 #include "CLocation.h"
+#include "CBattleEvent.h"
 
+//Initialize the game, create locations, player and monsters
 CGame::CGame()
-{  
+{ 
+  //Player
+  Player = new CGameCharacter();   
+  Player->SetHP(20);
+  Player->SetAttackModifier(0.75);
+
+  //Monsters
+  CGameCharacter* Orc     = new CGameCharacter();
+  CGameCharacter* Bandit  = new CGameCharacter();
+
+  //Events
+  CBattleEvent* battle1 = new CBattleEvent(Player, Orc);
+  CBattleEvent* battle2 = new CBattleEvent(Player, Bandit);
+  battle1->SetDescription("As you walk forward an Orc jumps at you through "
+                          " a bush!\n");
+  battle2->SetDescription("Suddenly a bandit attacks you from behind screaming"
+                          " \"GIEF ME UR MONIES, PUNK!\"\n");
+
+  //ORC
+  Orc->SetName("an Orc");
+  Orc->SetHP(10);
+  Orc->SetAttackModifier(0.50);
+
+  //BANDIT 
+  Bandit->SetName("a Bandit");
+  Bandit->SetHP(15);
+  Bandit->SetAttackModifier(0.40);
+
+  //Locations
+  CLocation* Location1 = new CLocation();
+  CLocation* Location2 = new CLocation();
+  CLocation* Location3 = new CLocation();
+
+  Locations.push_back(Location1);
+  Locations.push_back(Location2);
+  Locations.push_back(Location3);
+
+  //Routes
+  Location1->SetNorthRoute(Location2);
+  Location2->SetNorthRoute(Location3);
+
+  //initialize Location1
+  Location1->SetListener(this);
+  Location1->AddEvent(battle1);
+  /*Location1->SetDescription("You see an old and dirty road ahead of you."
+                           " The road looks like it hasn't been used in ages"
+                           " and you can feel that there's something really"
+                           " wrong with it...");*/
+
+  //initialize Location2
+  Location2->SetListener(this);
+  Location2->AddEvent(battle2);
+  //Location3->SetDescription("You see a small clearing up ahead.");
+
+
+  //initialize Location3
+  Location3->SetListener(this);
+  //Location3->SetDescription("You got out of the magic forest!");
+
+  //ADD EVENTS FOR LOCATION3 HERE!
+  //only one event that says something stupid and calls GameEnded() through
+  //IEventNotifier 
 }
 
 CGame::~CGame()
@@ -22,32 +85,24 @@ CGame::~CGame()
 
 void CGame::Start()
 {
-	unsigned int CharacterLocation = 0, i;
+  CurrentLocation = NULL;
   std::string PlayerName;
 
 	//printf("Welcome to Magic Forest, %s!\n", Player.GetName());
   printf("Welcome to Magic Forest!\n");
   this->AskPlayerInfo();
-  std::cout << "I see that you're called \"" << Player.GetName() << "\" ";
+  std::cout << "I see that you're called \"" << Player->GetName() << "\" ";
   std::cout << "Now let's set on our epic journey across the MAGIC FOREST!" << std::endl;
 
-	while (CharacterLocation >= 0)
+  CurrentLocation = Locations[0];
+
+	while (CurrentLocation)
 	{
 		/* play the events */
-		Locations[CharacterLocation]->ExecuteEvents();
+    CurrentLocation->ExecuteEvents();
 
 		/* find out where the player wants to go next */
-		CLocation* pNextLocation = NULL;
-		pNextLocation = Locations[CharacterLocation]->AskRoute();
-
-		/* finds the corresponding location from the vector */
-		for (i = 0; i < Locations.size(); i++)
-		{
-			if (Locations[i] == pNextLocation) 
-			{
-				CharacterLocation = i;
-			}
-		}
+    CurrentLocation->AskRoute();
 	}
 }
 
@@ -74,15 +129,20 @@ void CGame::AskPlayerInfo()
     std::cin >> PlayerName;
   }
 
-  Player.SetName( PlayerName );
+  Player->SetName( PlayerName );
 }
 
-void CGame::LocationChanged( const CLocation* newLocation )
+void CGame::LocationChanged( CLocation* newLocation )
 {
-
+  CurrentLocation = newLocation;
 }
 
-void CGame::PlayerDied( const CGameCharacter* Player )
+void CGame::PlayerDied( CGameCharacter* Player )
 {
- 
+  std::cout << "You couldn't get out of the magic forest :(" << std::endl; 
+}
+
+void CGame::GameEnded()
+{
+  End();
 }

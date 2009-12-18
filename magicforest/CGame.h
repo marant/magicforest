@@ -28,10 +28,12 @@ public:
   void AskPlayerInfo();
 
 private:
-	CGameCharacter Player;
+	CGameCharacter* Player;
 	std::vector<CLocation*> Locations;
-  void LocationChanged( const CLocation* newLocation );
-  void PlayerDied( const CGameCharacter* Player );
+  CLocation* CurrentLocation;
+  void LocationChanged( CLocation* newLocation );
+  void PlayerDied( CGameCharacter* Player );
+  void GameEnded();
 };
 
 #endif /* __CGAME_H__ */

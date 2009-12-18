@@ -67,6 +67,12 @@ int CBattleEvent::RunEvent()
   Player->SetTarget(Opponent);
   Opponent->SetTarget(Player);
   
+  //print out event's description, if we have one
+  if( !Description.empty() )
+  {
+    std::cout << Description;
+  }
+
   std::cout << "You're fighting against " << Opponent->GetName() << std::endl;
 
   while( FightIsOn )
