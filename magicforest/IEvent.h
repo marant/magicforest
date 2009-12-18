@@ -36,8 +36,9 @@ class IEventNotifier
 {
 
 public:
-  virtual void LocationChanged( const CLocation* pNewLocation ) = 0;
-  virtual void PlayerDied( const CGameCharacter* pPlayer ) = 0;
+  virtual void LocationChanged( CLocation* pNewLocation ) = 0;
+  virtual void PlayerDied( CGameCharacter* pPlayer ) = 0;
+  virtual void GameEnded() = 0;
 };
 
 class IEvent 
