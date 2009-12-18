@@ -1,11 +1,13 @@
 #include "IPhysicalInteractions.h"
 #include "CGameCharacter.h"
 
+#include <cstdlib>
 IPhysicalInteractions::IPhysicalInteractions( )
 {
   this->pTarget = NULL;
   this->AttackModifier = 0;
   this->HP = 0;
+  srand( time(NULL) );  
 }
 
 /*
@@ -89,5 +91,6 @@ float IPhysicalInteractions::AttackTarget()
     return 0;
   }
 
-  return pTarget->DecreaseHP(AttackModifier);
+  int str = rand() % 5;
+  return pTarget->DecreaseHP( AttackModifier*str );
 }
