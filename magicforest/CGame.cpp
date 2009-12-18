@@ -141,6 +141,13 @@ void CGame::LocationChanged( CLocation* newLocation )
   CurrentLocation = newLocation;
 }
 
+void CGame::GotLoot( CGameItem* pLoot )
+{
+	Player->AddToInventory(pLoot);
+	pLoot->SetOwner(Player);
+	printf("You receive %s\n", pLoot->GetName());
+}
+
 void CGame::PlayerDied( CGameCharacter* Player )
 {
   std::cout << "You couldn't get out of the magic forest :(" << std::endl; 
