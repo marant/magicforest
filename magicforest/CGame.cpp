@@ -2,6 +2,7 @@
 #include "CGame.h"
 #include "CLocation.h"
 #include "CBattleEvent.h"
+#include "CEndEvent.h"
 
 //Initialize the game, create locations, player and monsters
 CGame::CGame()
@@ -18,6 +19,9 @@ CGame::CGame()
   //Events
   CBattleEvent* battle1 = new CBattleEvent(Player, Orc);
   CBattleEvent* battle2 = new CBattleEvent(Player, Bandit);
+  CEndEvent* endevent = new CEndEvent();
+  endevent->SetListener(this);
+
   battle1->SetDescription("As you walk forward an Orc jumps at you through "
                           " a bush!\n");
   battle2->SetDescription("Suddenly a bandit attacks you from behind screaming"
@@ -62,11 +66,7 @@ CGame::CGame()
 
   //initialize Location3
   Location3->SetListener(this);
-  //Location3->SetDescription("You got out of the magic forest!");
-
-  //ADD EVENTS FOR LOCATION3 HERE!
-  //only one event that says something stupid and calls GameEnded() through
-  //IEventNotifier 
+  Location3->AddEvent(endevent);
 }
 
 CGame::~CGame()
@@ -102,13 +102,17 @@ void CGame::Start()
     CurrentLocation->ExecuteEvents();
 
 		/* find out where the player wants to go next */
-    CurrentLocation->AskRoute();
+    if( CurrentLocation )
+    {
+      CurrentLocation->AskRoute();
+    }
 	}
 }
 
 void CGame::End()
 {
 	printf("You made it out of the Magic Forest. Congratulations!\n");
+  CurrentLocation = NULL;
 }
 
 void CGame::AskPlayerInfo()
