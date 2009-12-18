@@ -11,8 +11,13 @@
  * the player. 
  *
  */
- 
-class CBattleEvent : IEvent {
+
+#include "IEvent.h"
+
+class CGameCharacter;
+
+class CBattleEvent : public IEvent 
+{
 public:
   CBattleEvent();
   CBattleEvent(CGameCharacter* pPlayer, CGameCharacter* pOpponent);

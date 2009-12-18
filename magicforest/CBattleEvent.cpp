@@ -118,9 +118,13 @@ int CBattleEvent::RunEvent()
     else if( Player->GetHP() == 0 )
     {
       std::cout << "You died :(" << std::endl;
-      std::cout << "You weren't able to make it out of the magic forest";
       std::cout << std::endl;
       FightIsOn = false;
+
+      if( Listener )
+      {
+        Listener->PlayerDied(Player);
+      }
     }
   }
 
