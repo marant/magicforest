@@ -14,8 +14,9 @@
  
 class CBattleEvent : IEvent {
 public:
-  CBattleEvent ();
-  ~CBattleEvent ();
+  CBattleEvent();
+  CBattleEvent(CGameCharacter* pPlayer, CGameCharacter* pOpponent);
+  ~CBattleEvent();
 
   /* 
    * declared in IEvent as virtual so we have to implement it

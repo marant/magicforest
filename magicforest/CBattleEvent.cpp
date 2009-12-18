@@ -7,6 +7,12 @@ CBattleEvent::CBattleEvent()
   this->Opponent = NULL;
 }
 
+CBattleEvent::CBattleEvent(CGameCharacter* pPlayer, CGameCharacter* pOpponent)
+{
+  this->Player = pPlayer;
+  this->pOpponent = pOpponent;
+}
+
 /*
  * do _NOT_ free the player as we'll be needing him even after the fight
  * we might also need the opponent for something (eg. looting) so we don't
@@ -55,7 +61,7 @@ int CBattleEvent::RunEvent()
     return 0;
   }
   
-
+  // Set targets so we can use AttackTarget() function
   Player->SetTarget(Opponent);
   Opponent->SetTarget(Player);
 
@@ -76,14 +82,38 @@ int CBattleEvent::RunEvent()
       std::cin >> choice;
     }
 
+    if( choice == 1 )
+    {
+      std::cout << "YEAH!! You dealt " << Player->AttackTarget << " damage to ";
+      std::cout << Opponent->GetName() << std::endl; 
+    }
+
     // haven't really thought escaping through yet so we'll just insult the 
     // player.
-    if( choice == 2 )
+    else if( choice == 2 )
     {
       std::cout << "YOU COWARD! Get back in the there!" << std::endl;
       std::cout << Opponent->GetName() << "Will get a free strike at you!";
       std::cout << std::endl;
+      std::cout << Opponent->GetName() << "Deals " << Opponent->AttackTarget();
+      std::cout << " damage to you!" << std::endl;
     }
 
+    if( Player->GetHP() == 0 )
+    {
+      std::cout << "You died :(" << std::endl;
+      std::cout << "You weren't able to make it out of the magic forest";
+      std::cout << std::endl;
+      FightIsOn = false;
+    }
+
+    else if( Opponent->GetHP() == 0 )
+    {
+      std::cout << "Congratulations! You killed " << Oppponent->GetName();
+      std::cout << std::endl;
+      FightIsOn = false;
+    }
   }
+
+  return 0;
 }
