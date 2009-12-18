@@ -1,4 +1,5 @@
 #include "CGenericEvent.h"
+#include <iostream>
 
 CGenericEvent::CGenericEvent()
  : IEvent()
@@ -13,7 +14,7 @@ CGenericEvent::~CGenericEvent()
 
 int CGenericEvent::RunEvent()
 {
-	printf("%s\n", this->GetDescription());
+	std::cout << this->GetDescription() << std::endl;
 	if (Listener && Loot) 
 	{
 		Listener->GotLoot(Loot);

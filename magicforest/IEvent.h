@@ -31,12 +31,14 @@
 class IGameObject;
 class CLocation;
 class CGameCharacter;
+class CGameItem;
 
 class IEventNotifier 
 {
 
 public:
   virtual void LocationChanged( CLocation* pNewLocation ) = 0;
+	virtual void GotLoot( CGameItem* pLoot ) = 0;
   virtual void PlayerDied( CGameCharacter* pPlayer ) = 0;
   virtual void GameEnded() = 0;
 };
