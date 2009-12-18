@@ -154,7 +154,7 @@ void CGame::GotLoot( CGameItem* pLoot )
 {
 	Player->AddToInventory(pLoot);
 	pLoot->SetOwner(Player);
-	printf("You receive %s\n", pLoot->GetName());
+	std::cout << pLoot->GetName() << std::endl;
 }
 
 void CGame::PlayerDied( CGameCharacter* Player )
