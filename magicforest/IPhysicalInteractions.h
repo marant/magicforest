@@ -30,11 +30,12 @@ public:
   
   /* get */
   CGameCharacter* GetTarget() const { return this->pTarget; }
+  inline float GetHP() const { return this->HP; }
 
 private:
   CGameCharacter* pTarget;
   float HP;
-  float AttackModifier;
+  float AttackModifier; // used to reduce enemy HP
 
   /*
    * Increases or decreases HP. If change > 0 HP is increased
