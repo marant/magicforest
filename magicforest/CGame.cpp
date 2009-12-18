@@ -19,13 +19,13 @@ CGame::CGame()
   CGameCharacter* Bandit  = new CGameCharacter();
 
 	//Loot
-	CGameItem* phat = new CGameItem();
-	phat->SetName("a can of ES");
+  CGameItem* phat = new CGameItem();
+  phat->SetName("a can of ES");
 
   //Events
   CBattleEvent* battle1 = new CBattleEvent(Player, Orc);
   CBattleEvent* battle2 = new CBattleEvent(Player, Bandit);
-	CGenericEvent* lootevent = new CGenericEvent();
+  CGenericEvent* lootevent = new CGenericEvent();
   CEndEvent* endevent = new CEndEvent();
 	lootevent->SetLoot(phat);
   endevent->SetListener(this);
