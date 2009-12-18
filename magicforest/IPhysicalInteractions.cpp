@@ -3,6 +3,8 @@
 IPhysicalInteractions::IPhysicalInteractions( )
 {
   this->pTarget = NULL;
+  this->AttackModifier = 0;
+  this->HP = 0;
 }
 
 /*
@@ -56,3 +58,16 @@ bool IPhysicalInteractions::SetTarget( CGameCharacter* newTarget )
   return true;
 }
 
+/*
+ * attacks the target by reducing target's HP
+ * returns the amount of damage dealt
+ */
+float IPhysicalInteractions::AttackTarget()
+{
+  if( !pTarget )
+  {
+    return 0;
+  }
+
+  return pTarget->DecreaseHP(AttackModifier);
+}

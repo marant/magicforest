@@ -22,6 +22,9 @@ public:
   float DecreaseHP( float amount );
   float IncreaseHP( float amount );
 
+
+  float AttackTarget();
+
   /* set */
   bool SetTarget( CGameCharacter* newTarget );
   
