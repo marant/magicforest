@@ -3,11 +3,11 @@ CFLAGS = -Wall -W -g
 DEFINE = -DDEBUG
 
 magicforest: CGame.o CGameCharacter.o CGameItem.o CLocation.o IEvent.o \
-						 CBattleEvent.o CEndEvent.o\
+						 CBattleEvent.o CEndEvent.o CGenericEvent.o\
 						 IGameObject.o IInteractionEssentials.o IPhysicalInteractions.o
 	$(CXX) $(CFLAGS) $(DEFINE) CGame.o CGameCharacter.o CGameItem.o CLocation.o IEvent.o \
 				IGameObject.o IInteractionEssentials.o IPhysicalInteractions.o CBattleEvent.o \
-				CEndEvent.o \
+				CEndEvent.o CGenericEvent.o \
 				magicforest.cpp -o magicforest
 
 CGame.o: CGame.cpp CGame.h \
